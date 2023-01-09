@@ -1,10 +1,12 @@
-import { Comments } from "./Comments";
+import { Link } from "react-router-dom";
 
 export function Review({ title, designer, owner, review_img_url, category, created_at, votes, review_body, review_id }) {
   return (
     <div className="Review">
       <img src={review_img_url} alt={title} />
-      <h3>{title}</h3>
+      <Link to={`/Reviews/${review_id}`} className="Title">
+        {title}
+      </Link>
       <div className="ReviewInfo">
         <span className="Designer">by {designer}</span>
         <span className="Category">{category}</span>
