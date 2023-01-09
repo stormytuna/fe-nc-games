@@ -13,6 +13,7 @@ export function Review({ title, designer, owner, review_img_url, category, creat
       </div>
       <span className="Votes">Votes: {votes}</span>
       <p className="ReviewBody">{review_body}</p>
+      <Comments reviewId={review_id} />
     </div>
   );
 }
