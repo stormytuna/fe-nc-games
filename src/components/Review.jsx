@@ -3,7 +3,7 @@ import { Comments } from "./Comments";
 export function Review({ title, designer, owner, review_img_url, category, created_at, votes, review_body, review_id }) {
   return (
     <div className="Review">
-      <img src={review_img_url} alt="" />
+      <img src={review_img_url} alt={title} />
       <h3>{title}</h3>
       <div className="ReviewInfo">
         <span className="Designer">by {designer}</span>
