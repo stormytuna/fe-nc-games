@@ -1,5 +1,3 @@
-import { Comments } from "./Comments";
-
 export function Review({ title, designer, owner, review_img_url, category, created_at, votes, review_body, review_id }) {
   return (
     <div className="Review">
