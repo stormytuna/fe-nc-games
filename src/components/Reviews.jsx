@@ -11,7 +11,10 @@ export function Reviews() {
       .then((response) => {
         setReviews(response.data.reviews);
       })
-      .catch((e) => console.error(e));
+      .catch((e) => {
+        console.error(e);
+        window.alert("ERROR: Could not contact the server, try again later");
+      });
   }, []);
 
   return (
