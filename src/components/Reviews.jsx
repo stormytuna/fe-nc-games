@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { Review } from "./Review";
 
 export function Reviews() {
-  const [filters, setFilters] = useState({});
   const [reviews, setReviews] = useState([]);
 
   useEffect(() => {
@@ -13,7 +12,7 @@ export function Reviews() {
         setReviews(response.data.reviews);
       })
       .catch((e) => console.error(e));
-  }, [filters]);
+  }, []);
 
   return (
     <div className="Reviews">
