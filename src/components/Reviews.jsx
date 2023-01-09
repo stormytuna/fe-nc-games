@@ -11,7 +11,6 @@ export function Reviews() {
       .get("https://be-nc-games.onrender.com/api/reviews")
       .then((response) => {
         setReviews(response.data.reviews);
-        console.log(response.data.reviews[0]);
       })
       .catch((e) => console.error(e));
   }, [filters]);
@@ -21,7 +20,7 @@ export function Reviews() {
       <ul>
         {reviews.map((review) => {
           return (
-            <li>
+            <li key={review.review_id}>
               <Review {...review} />
             </li>
           );
