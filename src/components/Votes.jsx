@@ -5,13 +5,12 @@ export function Votes({ setCurrentVotes, reviewId }) {
   const [isDisabled, setIsDisabled] = useState(false);
 
   function handleVoting(e) {
+    setCurrentVotes((votes) => votes + incVotes);
+    setIsDisabled(true);
     const incVotes = e.target.classList.contains("UpVote") ? 1 : -1;
     axios
       .patch(`https://be-nc-games.onrender.com/api/reviews/${reviewId}`, { inc_votes: incVotes })
-      .then((response) => {
-        setCurrentVotes((votes) => votes + incVotes);
-        setIsDisabled(true);
-      })
+      .then((response) => {})
       .catch((e) => {
         console.error(e);
         window.alert("ERROR: Could not contact the server, try again later");
