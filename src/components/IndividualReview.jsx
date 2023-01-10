@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { getReview } from "../api";
 import { Comments } from "./Comments";
 import { Review } from "./Review";
 
@@ -9,10 +10,9 @@ export function IndividualReview() {
   const [review, setReview] = useState({});
 
   useEffect(() => {
-    axios
-      .get(`https://be-nc-games.onrender.com/api/reviews/${review_id}`)
-      .then((response) => {
-        setReview(response.data.review);
+    getReview(review_id)
+      .then((review) => {
+        setReview(review);
       })
       .catch((e) => {
         console.error(e);
