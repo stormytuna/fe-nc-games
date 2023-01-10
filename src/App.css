@@ -48,7 +48,8 @@
   padding: 10px;
 }
 
-.Review h3 {
+.Review .Title {
+  text-decoration: none;
   text-align: left;
   font-size: 20px;
 }
