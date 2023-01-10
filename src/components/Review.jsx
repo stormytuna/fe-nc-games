@@ -10,8 +10,8 @@ export function Review({ title, designer, owner, review_img_url, category, creat
       <div className="ImageAndVotes">
         <img src={review_img_url} alt={title} />
         <p>Votes: {currentVotes}</p>
+        <Votes setCurrentVotes={setCurrentVotes} reviewId={review_id} />
       </div>
-      <Votes setCurrentVotes={setCurrentVotes} reviewId={review_id} />
       <h3>{title}</h3>
       <div className="ReviewInfo">
         <span className="Designer">by {designer}</span>
