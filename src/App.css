@@ -82,3 +82,17 @@
   padding: 5px;
   border-radius: 4px;
 }
+
+.AddComment .Text {
+  width: 70vw;
+  height: 30px;
+  border-radius: 5px;
+  border: solid 1px rgb(240, 240, 240);
+}
+
+.AddComment .Submit {
+  width: 60px;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 5px;
+}
