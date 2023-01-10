@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { getComments, postComment } from "../api";
 import { Comment } from "./Comment";
 
 export function Comments({ reviewId }) {
@@ -8,10 +8,9 @@ export function Comments({ reviewId }) {
   const [commentText, setCommentText] = useState("");
 
   useEffect(() => {
-    axios
-      .get(`https://be-nc-games.onrender.com/api/reviews/${reviewId}/comments`)
-      .then((response) => {
-        setComments(response.data.comments);
+    getComments(reviewId)
+      .then((comments) => {
+        setComments(comments);
       })
       .catch((e) => {
         console.error(e);
@@ -23,11 +22,8 @@ export function Comments({ reviewId }) {
     e.preventDefault();
     setCommentText("");
 
-    // Hard coding username, in a real life example this would be handled by some authentification system
-    axios
-      .post(`https://be-nc-games.onrender.com/api/reviews/${reviewId}/comments`, { body: commentText, username: "jessjelly" })
-      .then((response) => {
-        const newComment = response.data.comment;
+    postComment(reviewId, commentText)
+      .then((newComment) => {
         setComments((curComments) => {
           return [newComment, ...curComments];
         });

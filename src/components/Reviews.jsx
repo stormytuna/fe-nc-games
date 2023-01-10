@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getReviews } from "../api";
 import { Review } from "./Review";
 
 export function Reviews() {
@@ -7,10 +8,9 @@ export function Reviews() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("https://be-nc-games.onrender.com/api/reviews")
-      .then((response) => {
-        setReviews(response.data.reviews);
+    getReviews()
+      .then((reviews) => {
+        setReviews(reviews);
         setIsLoading(false);
       })
       .catch((e) => {
