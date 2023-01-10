@@ -7,8 +7,6 @@ export function Comments({ reviewId }) {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
-    console.log(reviewId);
-
     axios
       .get(`https://be-nc-games.onrender.com/api/reviews/${reviewId}/comments`)
       .then((response) => {
