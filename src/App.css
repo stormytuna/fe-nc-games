@@ -73,7 +73,7 @@
   font-size: 14px;
 }
 
-.Review .UpVoteAndDownVote {
+.Votes {
   position: absolute;
   top: 5px;
   right: 10px;
