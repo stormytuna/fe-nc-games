@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Votes } from "./Votes";
 import { Link } from "react-router-dom";
 
-export function Review({ title, designer, owner, review_img_url, category, created_at, votes, review_body, review_id }) {
+export function Review({ title, designer, owner, review_img_url, category, created_at, votes, review_body, review_id, comment_count }) {
   const [currentVotes, setCurrentVotes] = useState(votes);
 
   return (
@@ -20,6 +20,7 @@ export function Review({ title, designer, owner, review_img_url, category, creat
         <span className="Category">{category}</span>
         <span className="CreatedAt">{created_at}</span>
         <span className="Owner">review by {owner}</span>
+        <span className="CommentCount">comments: {comment_count}</span>
       </div>
       <p className="ReviewBody">{review_body}</p>
     </div>
