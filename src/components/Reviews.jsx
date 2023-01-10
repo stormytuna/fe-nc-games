@@ -5,13 +5,17 @@ import { Review } from "./Review";
 export function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [chosenCategory, setChosenCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
-  // TODO: find parametric endpoint for category
 
   useEffect(() => {
-    // TODO: integrate category parametric endpoint in this get request
+    let url = "https://be-nc-games.onrender.com/api/reviews";
+    if (chosenCategory !== "all") {
+      url += `?category=${chosenCategory}`;
+    }
+
     axios
-      .get("https://be-nc-games.onrender.com/api/reviews")
+      .get(url)
       .then((response) => {
         setReviews(response.data.reviews);
         setIsLoading(false);
@@ -28,11 +32,7 @@ export function Reviews() {
         console.error(e);
         window.alert("ERROR: Could not contact the server, try again later");
       });
-  }, []);
-
-  function changeCategory(e) {
-    console.log(e.target.value);
-  }
+  }, [chosenCategory]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
@@ -40,13 +40,9 @@ export function Reviews() {
 
   return (
     <div className="Reviews">
-      <select name="Category">
+      <select name="Category" onChange={(e) => setChosenCategory(e.target.value)}>
         {categories.map((category) => {
-          return (
-            <option value={category} onChange={changeCategory}>
-              {category}
-            </option>
-          );
+          return <option value={category}>{category}</option>;
         })}
       </select>
       <ul>
