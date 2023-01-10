@@ -21,13 +21,16 @@ export function Comments({ reviewId }) {
 
   function handleSubmitComment(e) {
     e.preventDefault();
+    setCommentText("");
 
     // Hard coding username, in a real life example this would be handled by some authentification system
     axios
       .post(`https://be-nc-games.onrender.com/api/reviews/${reviewId}/comments`, { body: commentText, username: "jessjelly" })
       .then((response) => {
-        // TODO: Come back after ticket 6 is merged and make this add the submitted comment to our comments
-        console.log(response.data.comment);
+        const newComment = response.data.comment;
+        setComments((curComments) => {
+          return [newComment, ...curComments];
+        });
       })
       .catch((e) => {
         console.error(e);
@@ -42,7 +45,7 @@ export function Comments({ reviewId }) {
       })}
       <div className="AddComment">
         <form>
-          <input className="Text" type="text" placeholder="Write a comment..." onChange={(e) => setCommentText(e.target.value)} />
+          <input className="Text" type="text" placeholder="Write a comment..." onChange={(e) => setCommentText(e.target.value)} value={commentText} />
           <input className="Submit" type="submit" value="Submit" onClick={handleSubmitComment} />
         </form>
       </div>
