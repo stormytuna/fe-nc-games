@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { getReviews } from "../api";
 import { Review } from "./Review";
 
 export function Reviews() {
@@ -9,15 +10,14 @@ export function Reviews() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    let url = "https://be-nc-games.onrender.com/api/reviews";
+    const urlParams = {};
     if (chosenCategory !== "all") {
-      url += `?category=${chosenCategory}`;
+      urlParams.category = chosenCategory;
     }
 
-    axios
-      .get(url)
-      .then((response) => {
-        setReviews(response.data.reviews);
+    getReviews(urlParams)
+      .then((reviews) => {
+        setReviews(reviews);
         setIsLoading(false);
 
         return axios.get("https://be-nc-games.onrender.com/api/categories");
