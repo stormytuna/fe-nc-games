@@ -83,6 +83,21 @@
   border-radius: 4px;
 }
 
+.AddComment .Text {
+  width: 70vw;
+  height: 30px;
+  border-radius: 5px;
+  border: solid 1px rgb(240, 240, 240);
+}
+
+.AddComment .Submit {
+  width: 60px;
+  height: 30px;
+  margin-left: 0px;
+  padding: 0;
+  border-radius: 5px;
+}
+
 .Comments {
   display: inline-block;
 }
