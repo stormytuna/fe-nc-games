@@ -1,15 +1,16 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import { getReviews } from "../api";
+import { CategoriesDropdown } from "./CategoriesDropdown";
 import { Review } from "./Review";
 
 export function Reviews() {
   const [reviews, setReviews] = useState([]);
-  const [categories, setCategories] = useState([]);
   const [chosenCategory, setChosenCategory] = useState("all");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    setIsLoading(true);
+
     const urlParams = {};
     if (chosenCategory !== "all") {
       urlParams.category = chosenCategory;
@@ -19,14 +20,6 @@ export function Reviews() {
       .then((reviews) => {
         setReviews(reviews);
         setIsLoading(false);
-
-        return axios.get("https://be-nc-games.onrender.com/api/categories");
-      })
-      .then((response) => {
-        const fetchedCategories = response.data.categories;
-        const fetchedCategoySlugs = fetchedCategories.map((category) => category.slug);
-        const newCategories = ["all", ...fetchedCategoySlugs];
-        setCategories(newCategories);
       })
       .catch((e) => {
         console.error(e);
@@ -40,11 +33,7 @@ export function Reviews() {
 
   return (
     <div className="Reviews">
-      <select name="Category" onChange={(e) => setChosenCategory(e.target.value)}>
-        {categories.map((category) => {
-          return <option value={category}>{category}</option>;
-        })}
-      </select>
+      <CategoriesDropdown chosenCategory={chosenCategory} setChosenCategory={setChosenCategory} />
       <ul>
         {reviews.map((review) => {
           return (
