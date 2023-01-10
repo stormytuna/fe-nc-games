@@ -82,3 +82,33 @@
   padding: 5px;
   border-radius: 4px;
 }
+
+.Comments {
+  display: inline-block;
+}
+
+.Comment {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  font-weight: 400;
+
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
+  padding: 10px;
+
+  align-items: center;
+}
+
+.Comment button {
+  padding: 5px;
+  margin-left: auto;
+}
+
+.Comment .Author {
+  font-weight: 600;
+}
+
+.Comment .Timestamp {
+  font-weight: 300;
+}

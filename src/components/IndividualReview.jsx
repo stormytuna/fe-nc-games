@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import { Comments } from "./Comments";
 import { Review } from "./Review";
 
 export function IndividualReview() {
@@ -22,6 +23,7 @@ export function IndividualReview() {
   return (
     <div className="Reviews">
       <Review {...review} />
+      <Comments reviewId={review_id} />
     </div>
   );
 }
