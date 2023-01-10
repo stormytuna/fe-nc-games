@@ -4,14 +4,25 @@ import { Review } from "./Review";
 
 export function Reviews() {
   const [reviews, setReviews] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  // TODO: find parametric endpoint for category
 
   useEffect(() => {
+    // TODO: integrate category parametric endpoint in this get request
     axios
       .get("https://be-nc-games.onrender.com/api/reviews")
       .then((response) => {
         setReviews(response.data.reviews);
         setIsLoading(false);
+
+        return axios.get("https://be-nc-games.onrender.com/api/categories");
+      })
+      .then((response) => {
+        const fetchedCategories = response.data.categories;
+        const fetchedCategoySlugs = fetchedCategories.map((category) => category.slug);
+        const newCategories = ["all", ...fetchedCategoySlugs];
+        setCategories(newCategories);
       })
       .catch((e) => {
         console.error(e);
@@ -19,12 +30,25 @@ export function Reviews() {
       });
   }, []);
 
+  function changeCategory(e) {
+    console.log(e.target.value);
+  }
+
   if (isLoading) {
     return <h2>Loading...</h2>;
   }
 
   return (
     <div className="Reviews">
+      <select name="Category">
+        {categories.map((category) => {
+          return (
+            <option value={category} onChange={changeCategory}>
+              {category}
+            </option>
+          );
+        })}
+      </select>
       <ul>
         {reviews.map((review) => {
           return (
