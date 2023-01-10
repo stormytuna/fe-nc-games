@@ -56,7 +56,8 @@ ul {
   padding-bottom: 0px;
 }
 
-.Review h3 {
+.Review .Title {
+  text-decoration: none;
   text-align: left;
   font-size: 20px;
 }
@@ -128,6 +129,51 @@ ul {
   margin-top: 10px;
   padding: 5px;
   border-radius: 4px;
+}
+
+.AddComment .Text {
+  width: 70vw;
+  height: 30px;
+  border-radius: 5px;
+  border: solid 1px rgb(240, 240, 240);
+}
+
+.AddComment .Submit {
+  width: 60px;
+  height: 30px;
+  margin-left: 0px;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.Comments {
+  display: inline-block;
+}
+
+.Comment {
+  display: flex;
+  flex-direction: row;
+  margin: 5px;
+  font-weight: 400;
+
+  border-radius: 10px;
+  background-color: rgb(240, 240, 240);
+  padding: 10px;
+
+  align-items: center;
+}
+
+.Comment button {
+  padding: 5px;
+  margin-left: auto;
+}
+
+.Comment .Author {
+  font-weight: 600;
+}
+
+.Comment .Timestamp {
+  font-weight: 300;
 }
 
 @media screen and (max-width: 400) {

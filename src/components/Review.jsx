@@ -1,6 +1,6 @@
-import axios from "axios";
 import { useState } from "react";
 import { Votes } from "./Votes";
+import { Link } from "react-router-dom";
 
 export function Review({ title, designer, owner, review_img_url, category, created_at, votes, review_body, review_id }) {
   const [currentVotes, setCurrentVotes] = useState(votes);
@@ -12,7 +12,9 @@ export function Review({ title, designer, owner, review_img_url, category, creat
         <p>Votes: {currentVotes}</p>
         <Votes setCurrentVotes={setCurrentVotes} reviewId={review_id} />
       </div>
-      <h3>{title}</h3>
+      <Link to={`/Reviews/${review_id}`} className="Title">
+        {title}
+      </Link>
       <div className="ReviewInfo">
         <span className="Designer">by {designer}</span>
         <span className="Category">{category}</span>
