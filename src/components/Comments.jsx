@@ -46,7 +46,9 @@ export function Comments({ reviewId }) {
       <div className="AddComment">
         <form>
           <input className="Text" type="text" placeholder="Write a comment..." onChange={(e) => setCommentText(e.target.value)} value={commentText} />
-          <input className="Submit" type="submit" value="Submit" onClick={handleSubmitComment} />
+          <button className="Submit" onClick={handleSubmitComment}>
+            Submit
+          </button>
         </form>
       </div>
     </div>
