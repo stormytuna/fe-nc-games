@@ -4,7 +4,6 @@ import { Header } from "./components/Header";
 import { IndividualReview } from "./components/IndividualReview";
 import { MainContent } from "./components/MainContent";
 import { NavBar } from "./components/NavBar";
-import { Reviews } from "./components/Reviews";
 
 function App() {
   return (
