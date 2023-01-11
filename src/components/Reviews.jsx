@@ -1,13 +1,9 @@
 import { useEffect, useState } from "react";
 import { getReviews } from "../api";
-import { CategoriesDropdown } from "./CategoriesDropdown";
 import { Review } from "./Review";
-import { SortByDropdown } from "./SortByDropdown";
 
-export function Reviews() {
+export function Reviews({ chosenCategory, chosenSortBy }) {
   const [reviews, setReviews] = useState([]);
-  const [chosenCategory, setChosenCategory] = useState("all");
-  const [chosenSortBy, setChosenSortBy] = useState("votes:desc");
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -38,8 +34,6 @@ export function Reviews() {
 
   return (
     <div className="Reviews">
-      <CategoriesDropdown chosenCategory={chosenCategory} setChosenCategory={setChosenCategory} />
-      <SortByDropdown chosenSortBy={chosenSortBy} setChosenSortBy={setChosenSortBy} />
       <ul>
         {reviews.map((review) => {
           return (
