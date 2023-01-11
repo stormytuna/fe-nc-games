@@ -24,3 +24,7 @@ export function postComment(reviewId, commentText) {
 export function patchVotes(reviewId, incVotes) {
   return axios.patch(`https://be-nc-games.onrender.com/api/reviews/${reviewId}`, { inc_votes: incVotes }).then((res) => res.data.review);
 }
+
+export function deleteComment(commentId) {
+  return axios.delete(`https://be-nc-games.onrender.com/api/comments/${commentId}`);
+}

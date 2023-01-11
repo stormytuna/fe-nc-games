@@ -37,7 +37,7 @@ export function Comments({ reviewId }) {
   return (
     <div className="Comments">
       {comments.map((comment) => {
-        return <Comment {...comment} />;
+        return <Comment {...comment} setComments={setComments} />;
       })}
       <div className="AddComment">
         <form>
