@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { getComments, postComment } from "../api";
 import { Comment } from "./Comment";
+import { Error } from "./Error";
 
 export function Comments({ reviewId }) {
   const [isActive, setIsActive] = useState(false);
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
+  const [hasError, setHasError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     getComments(reviewId)
@@ -14,7 +17,8 @@ export function Comments({ reviewId }) {
       })
       .catch((e) => {
         console.error(e);
-        window.alert("ERROR: Could not contact the server, try again later");
+        setHasError(true);
+        setErrorMessage("Encountered an issue fetching comments, please try again later");
       });
   }, [isActive]);
 
@@ -30,8 +34,13 @@ export function Comments({ reviewId }) {
       })
       .catch((e) => {
         console.error(e);
-        window.alert("ERROR: Could not contact the server, try again later");
+        setHasError(true);
+        setErrorMessage("Encountered an issue posting a comment, please try again later");
       });
+  }
+
+  if (hasError) {
+    return <Error errorMessage={errorMessage} />;
   }
 
   return (
