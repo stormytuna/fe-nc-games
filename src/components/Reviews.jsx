@@ -1,21 +1,25 @@
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { getReviews } from "../api";
 import { Review } from "./Review";
 
 export function Reviews({ chosenCategory, chosenSortBy }) {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setIsLoading(true);
 
-    const urlParams = new URLSearchParams();
+    const urlParams = new URLSearchParams(searchParams);
     if (chosenCategory !== "all") {
-      urlParams.append("category", chosenCategory);
+      urlParams.set("category", chosenCategory);
     }
     const [sortBy, order] = chosenSortBy.split(":");
-    urlParams.append("sort_by", sortBy);
-    urlParams.append("order", order);
+    urlParams.set("sort_by", sortBy);
+    urlParams.set("order", order);
+
+    setSearchParams(urlParams);
 
     getReviews(urlParams)
       .then((reviews) => {
