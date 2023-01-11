@@ -13,7 +13,7 @@ export function CategoriesDropdown({ chosenCategory, setChosenCategory }) {
   }, []);
 
   return (
-    <select name="Category" value={chosenCategory} onChange={(e) => setChosenCategory(e.target.value)}>
+    <select className="Dropdown" name="Category" value={chosenCategory} onChange={(e) => setChosenCategory(e.target.value)}>
       {categories.map((category) => {
         return (
           <option value={category} key={category.slug}>
