@@ -131,6 +131,13 @@ ul {
   border-radius: 4px;
 }
 
+.Dropdown {
+  margin: 5px;
+  padding: 5px;
+  border-radius: 5px;
+  text-align: center;
+}
+
 .AddComment .Text {
   width: 70vw;
   height: 30px;
