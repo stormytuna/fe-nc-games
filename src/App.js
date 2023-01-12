@@ -14,7 +14,7 @@ function App() {
       <Routes>
         <Route path="/Reviews" element={<MainContent />} />
         <Route path="/Reviews/:review_id" element={<IndividualReview />} />
-        <Route path="/*" element={<Error errorMessage="Nothing to see here..." />} />
+        <Route path="/*" element={<Error error="Nothing to see here..." />} />
       </Routes>
     </div>
   );
