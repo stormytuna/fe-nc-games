@@ -188,6 +188,11 @@ ul {
   background-color: rgb(241, 195, 183);
 }
 
+.Comment .Delete:disabled {
+  cursor: default;
+  background-color: rgb(204, 204, 204);
+}
+
 @media screen and (max-width: 400) {
   .Review .ReviewInfo {
     flex-direction: column;

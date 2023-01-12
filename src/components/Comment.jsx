@@ -2,15 +2,18 @@ import { deleteComment } from "../api";
 
 export function Comment({ body, votes, author, created_at, comment_id, setComments }) {
   function handleDeleteComment(e) {
-    setComments((currentComments) => {
-      return currentComments.filter((comment) => {
-        return comment.comment_id !== comment_id;
+    deleteComment(comment_id)
+      .then(() => {
+        setComments((currentComments) => {
+          return currentComments.filter((comment) => {
+            return comment.comment_id !== comment_id;
+          });
+        });
+      })
+      .catch((e) => {
+        console.error(e);
+        window.alert("ERROR: Could not contact the server, try again later");
       });
-    });
-    deleteComment(comment_id).catch((e) => {
-      console.error(e);
-      window.alert("ERROR: Could not contact the server, try again later");
-    });
   }
 
   return (
@@ -19,7 +22,7 @@ export function Comment({ body, votes, author, created_at, comment_id, setCommen
         <span className="Author">{author}</span> <span className="Timestamp">[{created_at}]</span>: {body}
       </p>
       <button disabled>Votes: {votes}</button>
-      <button className="Delete" onClick={handleDeleteComment}>
+      <button className="Delete" onClick={handleDeleteComment} disabled={author !== "jessjelly"}>
         Delete
       </button>
     </div>
