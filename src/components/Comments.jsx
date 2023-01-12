@@ -15,7 +15,7 @@ export function Comments({ reviewId }) {
         console.error(e);
         window.alert("ERROR: Could not contact the server, try again later");
       });
-  });
+  }, []);
 
   function handleSubmitComment(e) {
     e.preventDefault();
