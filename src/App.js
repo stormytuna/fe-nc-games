@@ -12,8 +12,8 @@ function App() {
       <Header />
       <NavBar />
       <Routes>
-        <Route path="/Reviews" element={<MainContent />} />
-        <Route path="/Reviews/:review_id" element={<IndividualReview />} />
+        <Route path="/" element={<MainContent />} />
+        <Route path="/:review_id" element={<IndividualReview />} />
         <Route path="/*" element={<Error error="Nothing to see here..." />} />
       </Routes>
     </div>
