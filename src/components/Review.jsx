@@ -13,7 +13,7 @@ export function Review({ title, designer, owner, review_img_url, category, creat
         <p>Votes: {currentVotes}</p>
         <Votes setCurrentVotes={setCurrentVotes} reviewId={review_id} />
       </div>
-      <Link to={`/Reviews/${review_id}`} className="Title">
+      <Link to={`/${review_id}`} className="Title">
         {title}
       </Link>
       <div className="ReviewInfo">
