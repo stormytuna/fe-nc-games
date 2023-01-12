@@ -200,6 +200,16 @@ ul {
   background-color: rgb(204, 204, 204);
 }
 
+.Error h2 {
+  margin: 10px;
+  font-size: 30px;
+  text-decoration: underline;
+}
+
+.Error p {
+  font-size: 20px;
+}
+
 @media screen and (max-width: 400) {
   .Review .ReviewInfo {
     flex-direction: column;

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getReviews } from "../api";
 import { Error } from "./Error";
+import { Loading } from "./Loading";
 import { Review } from "./Review";
 
 export function Reviews({ chosenCategory, chosenSortBy }) {
@@ -36,7 +37,7 @@ export function Reviews({ chosenCategory, chosenSortBy }) {
   }, [chosenCategory, chosenSortBy]);
 
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <Loading />;
   }
 
   if (error) {
