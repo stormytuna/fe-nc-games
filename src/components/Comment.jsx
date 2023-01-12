@@ -1,4 +1,5 @@
 import { deleteComment } from "../api";
+import { formatDate } from "../utils";
 
 export function Comment({ body, votes, author, created_at, comment_id, setComments }) {
   function handleDeleteComment(e) {
@@ -19,7 +20,7 @@ export function Comment({ body, votes, author, created_at, comment_id, setCommen
   return (
     <div className="Comment">
       <p>
-        <span className="Author">{author}</span> <span className="Timestamp">[{created_at}]</span>: {body}
+        <span className="Author">{author}</span> <span className="Timestamp">[{formatDate(created_at)}]</span>: {body}
       </p>
       <button disabled>Votes: {votes}</button>
       <button className="Delete" onClick={handleDeleteComment} disabled={author !== "jessjelly"}>
