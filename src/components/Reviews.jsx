@@ -8,8 +8,7 @@ export function Reviews({ chosenCategory, chosenSortBy }) {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -31,26 +30,17 @@ export function Reviews({ chosenCategory, chosenSortBy }) {
       })
       .catch((e) => {
         console.error(e);
-        setHasError(true);
-        setErrorMessage("Encountered an issue fetching reviews, try again later!");
+        setError("Encountered an issue fetching reviews, try again later!");
         setIsLoading(false);
       });
   }, [chosenCategory, chosenSortBy]);
 
   if (isLoading) {
-    return (
-      <div className="Loading">
-        <h2>Loading...</h2>
-      </div>
-    );
+    return <h2>Loading...</h2>;
   }
 
-  if (hasError) {
-    return (
-      <div className="Error">
-        <Error errorMessage={errorMessage} />
-      </div>
-    );
+  if (error) {
+    return <Error error={error} />;
   }
 
   return (

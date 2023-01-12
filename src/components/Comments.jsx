@@ -7,8 +7,7 @@ export function Comments({ reviewId }) {
   const [isActive, setIsActive] = useState(false);
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     getComments(reviewId)
@@ -17,8 +16,7 @@ export function Comments({ reviewId }) {
       })
       .catch((e) => {
         console.error(e);
-        setHasError(true);
-        setErrorMessage("Encountered an issue fetching comments, please try again later");
+        setError("Encountered an issue fetching comments, please try again later");
       });
   }, [isActive]);
 
@@ -34,13 +32,12 @@ export function Comments({ reviewId }) {
       })
       .catch((e) => {
         console.error(e);
-        setHasError(true);
-        setErrorMessage("Encountered an issue posting a comment, please try again later");
+        setError("Encountered an issue posting a comment, please try again later");
       });
   }
 
-  if (hasError) {
-    return <Error errorMessage={errorMessage} />;
+  if (error) {
+    return <Error error={error} />;
   }
 
   return (

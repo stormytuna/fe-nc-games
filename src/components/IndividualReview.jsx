@@ -8,8 +8,7 @@ import { Review } from "./Review";
 export function IndividualReview() {
   const { review_id } = useParams();
   const [review, setReview] = useState({});
-  const [hasError, setHasError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     getReview(review_id)
@@ -18,13 +17,12 @@ export function IndividualReview() {
       })
       .catch((e) => {
         console.error(e);
-        setHasError(true);
-        setErrorMessage("Encountered an issue fetching review, try again later!");
+        setError("Encountered an issue fetching review, try again later!");
       });
   }, []);
 
-  if (hasError) {
-    return <Error errorMessage={errorMessage} />;
+  if (error) {
+    return <Error error={error} />;
   }
 
   return (
