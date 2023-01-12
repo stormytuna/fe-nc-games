@@ -5,11 +5,16 @@ export function CategoriesDropdown({ chosenCategory, setChosenCategory }) {
   const [categories, setCategories] = useState([]);
 
   useEffect(() => {
-    getCategories().then((categories) => {
-      const fetchedCategoySlugs = categories.map((category) => category.slug);
-      const newCategories = ["all", ...fetchedCategoySlugs];
-      setCategories(newCategories);
-    });
+    getCategories()
+      .then((categories) => {
+        const fetchedCategoySlugs = categories.map((category) => category.slug);
+        const newCategories = ["all", ...fetchedCategoySlugs];
+        setCategories(newCategories);
+      })
+      .catch((e) => {
+        console.error(e);
+        window.alert("ERROR: Could not contact the server, try again later");
+      });
   }, []);
 
   return (

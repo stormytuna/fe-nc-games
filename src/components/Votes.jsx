@@ -12,6 +12,7 @@ export function Votes({ setCurrentVotes, reviewId }) {
     patchVotes(reviewId, incVotes).catch((e) => {
       console.error(e);
       window.alert("ERROR: Could not contact the server, try again later");
+      setCurrentVotes((votes) => votes - incVotes);
     });
   }
 

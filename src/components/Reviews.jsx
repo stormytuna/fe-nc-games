@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getReviews } from "../api";
+import { Error } from "./Error";
 import { Review } from "./Review";
 
 export function Reviews({ chosenCategory, chosenSortBy }) {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [error, setError] = useState("");
 
   useEffect(() => {
     setIsLoading(true);
@@ -28,12 +30,17 @@ export function Reviews({ chosenCategory, chosenSortBy }) {
       })
       .catch((e) => {
         console.error(e);
-        window.alert("ERROR: Could not contact the server, try again later");
+        setError("Encountered an issue fetching reviews, try again later!");
+        setIsLoading(false);
       });
   }, [chosenCategory, chosenSortBy]);
 
   if (isLoading) {
     return <h2>Loading...</h2>;
+  }
+
+  if (error) {
+    return <Error error={error} />;
   }
 
   return (
