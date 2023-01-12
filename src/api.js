@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export function getReviews(urlParams) {
-  return axios.get("https://be-nc-games.onrender.com/ap/reviews", { params: urlParams }).then((res) => res.data.reviews);
+  return axios.get("https://be-nc-games.onrender.com/api/reviews", { params: urlParams }).then((res) => res.data.reviews);
 }
 
 export function getCategories() {
