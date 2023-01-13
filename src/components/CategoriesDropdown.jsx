@@ -8,7 +8,7 @@ export function CategoriesDropdown({ chosenCategory, setChosenCategory }) {
     getCategories()
       .then((categories) => {
         const fetchedCategoySlugs = categories.map((category) => category.slug);
-        const newCategories = ["all", ...fetchedCategoySlugs];
+        const newCategories = ["-- choose a category --", ...fetchedCategoySlugs];
         setCategories(newCategories);
       })
       .catch((e) => {

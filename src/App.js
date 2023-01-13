@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
+import { AddReview } from "./components/AddReview";
 import { Error } from "./components/Error";
 import { Header } from "./components/Header";
 import { IndividualReview } from "./components/IndividualReview";
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<MainContent />} />
         <Route path="/:review_id" element={<IndividualReview />} />
+        <Route path="/AddReview" element={<AddReview />} />
         <Route path="/*" element={<Error error="Nothing to see here..." />} />
       </Routes>
     </div>

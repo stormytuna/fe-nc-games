@@ -4,7 +4,7 @@ import { Reviews } from "./Reviews";
 import { SortByDropdown } from "./SortByDropdown";
 
 export function MainContent() {
-  const [chosenCategory, setChosenCategory] = useState("all");
+  const [chosenCategory, setChosenCategory] = useState("-- choose a category --");
   const [chosenSortBy, setChosenSortBy] = useState("votes:desc");
 
   return (

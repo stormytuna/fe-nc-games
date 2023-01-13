@@ -15,8 +15,10 @@ export function Reviews({ chosenCategory, chosenSortBy }) {
     setIsLoading(true);
 
     const urlParams = new URLSearchParams(searchParams);
-    if (chosenCategory !== "all") {
+    if (chosenCategory !== "-- choose a category --") {
       urlParams.set("category", chosenCategory);
+    } else {
+      urlParams.delete("category");
     }
     const [sortBy, order] = chosenSortBy.split(":");
     urlParams.set("sort_by", sortBy);

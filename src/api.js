@@ -28,3 +28,7 @@ export function patchVotes(reviewId, incVotes) {
 export function deleteComment(commentId) {
   return axios.delete(`https://be-nc-games.onrender.com/api/comments/${commentId}`);
 }
+
+export function postReview(title, review_body, designer, category) {
+  return axios.post("https://be-nc-games.onrender.com/api/reviews", { owner: "jessjelly", title, review_body, designer, category });
+}
